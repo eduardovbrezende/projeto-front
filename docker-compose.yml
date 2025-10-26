@@ -1,0 +1,29 @@
+version: "3.8"
+
+services:
+  mock-api:
+    container_name: dev_mock_api
+    build:
+      context: ./mock-api
+      dockerfile: Dockerfile
+    ports:
+      - "3004:3004"
+    volumes:
+      - ./mock-api/database.json:/usr/src/app/database.json
+    restart: always
+
+  frontend:
+    container_name: dev_frontend
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "5173:5173"
+    environment:
+      VITE_API_URL: http://localhost:3004
+      CHOKIDAR_USEPOLLING: "true"
+    volumes:
+      - ./src:/app/src
+    depends_on:
+      - mock-api
+    restart: always
