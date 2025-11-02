@@ -9,7 +9,7 @@ services:
     ports:
       - "3004:3004"
     volumes:
-      - ./mock-api/database.json:/usr/src/app/database.json
+      - ./mock-api:/usr/src/app
     restart: always
 
   frontend:
