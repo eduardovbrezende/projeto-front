@@ -1,10 +1,18 @@
 {
   "users": [
     {
-      "id": 1,
+      "id": "1",
       "nome": "Usuário Teste",
       "email": "teste@email.com",
       "senha": "123"
+    },
+    {
+      "id": "bc4c",
+      "nome": "eduardo",
+      "email": "eduardo@email.com",
+      "senha": "123",
+      "resetToken": null,
+      "resetTokenExpiry": null
     }
   ]
 }
