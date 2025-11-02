@@ -15,3 +15,9 @@ API Local Mock (JSON-Server):
 Propósito: Simular um backend para o sistema de autenticação (Login, Registo) e outras operações de CRUD.
 
 Localização: Corre localmente através do Docker Compose (http://localhost:3004).
+
+🚀 Roteiro do Projeto (Roadmap)
+✅ Setup e Estrutura Inicial
+✅ Autenticação e Navegação
+CRUD e Componentização
+Finalização e Documentação
