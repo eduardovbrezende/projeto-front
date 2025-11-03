@@ -17,7 +17,11 @@ Propósito: Simular um backend para o sistema de autenticação (Login, Registo)
 Localização: Corre localmente através do Docker Compose (http://localhost:3004).
 
 🚀 Roteiro do Projeto (Roadmap)
-✅ Setup e Estrutura Inicial
-✅ Autenticação e Navegação
-CRUD e Componentização
-Finalização e Documentação
+
+. ✅ Setup e Estrutura Inicial
+
+. ✅ Autenticação e Navegação
+
+. CRUD e Componentização
+
+. Finalização e Documentação
