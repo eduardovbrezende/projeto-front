@@ -25,6 +25,9 @@ function LoginPage() {
 
       console.log("Login bem sucedido", usuario);
 
+      // Guarda o objeto do utilizador no localStorage do navegador
+      localStorage.setItem("user", JSON.stringify(usuario));
+
       // se bem sucecido, navega para a HomePage
       navigate("/");
     } catch (error) {
