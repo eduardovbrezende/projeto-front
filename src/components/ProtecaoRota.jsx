@@ -6,12 +6,12 @@ const Protecao = ({ children }) => {
   // Analisa a memoria do navegador.
   const user = localStorage.getItem("user");
 
-  // 2. Se a memoria estiver vazio (não há user), redireciona para o Login.
+  // Se a memoria estiver vazia (não há user), redireciona para o Login.
   if (!user) {
     return <Navigate to="/login" replace />;
   }
 
-  // 3. Se houver utilizador, mostramos a página.
+  // Se houver utilizador, mostra a página.
   return children;
 };
 
