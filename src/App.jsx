@@ -1,4 +1,5 @@
 import { Routes, Route } from "react-router-dom";
+import Protecao from "./components/ProtecaoRota.jsx";
 
 // Import das páginas
 import HomePage from "./pages/HomePage.jsx";
@@ -10,7 +11,14 @@ function App() {
   return (
     <Routes>
       {/* Regra para a home page*/}
-      <Route path="/" element={<HomePage />} />
+      <Route
+        path="/"
+        element={
+          <Protecao>
+            <HomePage />
+          </Protecao>
+        }
+      />
 
       {/* Regra para a página de login */}
       <Route path="/login" element={<LoginPage />} />
