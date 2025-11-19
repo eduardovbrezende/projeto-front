@@ -13,6 +13,14 @@
       "senha": "123",
       "resetToken": null,
       "resetTokenExpiry": null
+    },
+    {
+      "id": "d9b6",
+      "nome": "Eduardo de Assis",
+      "email": "assis@email.com",
+      "senha": "1234",
+      "resetToken": null,
+      "resetTokenExpiry": null
     }
   ]
 }

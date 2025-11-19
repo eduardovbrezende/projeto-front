@@ -8,11 +8,13 @@ import {
   updateFilme,
 } from "../services/filmes";
 import CardFilmes from "../components/CardFilmes";
+import Button from "../components/Button/Button";
+import Input from "../components/Input/Input";
 
 function HomePage() {
   const [filmes, setFilmes] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [novoTitulo, setNovoTitulo] = useState(""); // Estado para o input de criar filme
+  const [novoTitulo, setNovoTitulo] = useState("");
 
   // URL base das imagens (definida no .env)
   const imgBaseUrl = import.meta.env.VITE_TMDB_IMG;
@@ -78,43 +80,30 @@ function HomePage() {
     <div style={{ padding: "20px", maxWidth: "1200px", margin: "0 auto" }}>
       <header style={{ marginBottom: "30px", textAlign: "center" }}>
         <h1>Catálogo de Filmes</h1>
-
         <form
           onSubmit={handleCriarFilme}
           style={{
             marginTop: "20px",
-            padding: "15px",
+            padding: "20px",
             background: "#f4f4f4",
             borderRadius: "8px",
+            display: "flex",
+            gap: "10px",
+            alignItems: "flex-end", // Alinha o botão com o input
           }}
         >
-          <input
-            type="text"
-            placeholder="Nome do filme..."
-            value={novoTitulo}
-            onChange={(e) => setNovoTitulo(e.target.value)}
-            style={{
-              padding: "10px",
-              width: "60%",
-              marginRight: "10px",
-              border: "1px solid #ccc",
-              borderRadius: "4px",
-            }}
-          />
-          <button
-            type="submit"
-            style={{
-              padding: "10px 20px",
-              background: "#28a745",
-              color: "#fff",
-              border: "none",
-              borderRadius: "4px",
-              cursor: "pointer",
-            }}
-          >
-            Adicionar Filme
-          </button>
-        </form>
+          <div style={{ flexGrow: 1 }}>
+            <Input
+              label="Novo Filme"
+              placeholder="Digite o nome do filme..."
+              value={novoTitulo}
+              onChange={(e) => setNovoTitulo(e.target.value)}
+            />
+          </div>
+          <Button type="submit" variant="primary">
+            Adicionar
+          </Button>
+        </form>{" "}
       </header>
 
       <div

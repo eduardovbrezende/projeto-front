@@ -1,4 +1,4 @@
-import React from "react";
+import Button from "./Button/Button";
 
 // Pega a URL base das imagens do .env
 const imgBaseUrl = import.meta.env.VITE_TMDB_IMG;
@@ -18,20 +18,13 @@ function CardFilmes({ filme, onEdit, onDelete }) {
         <p style={styles.rating}>⭐ {filme.vote_average}</p>
 
         <div style={styles.actions}>
-          {/* Ao clicar, chama as funções passadas pelo HomePage */}
-          <button
-            onClick={() => onEdit(filme.id, filme.title)}
-            style={{ ...styles.btn, background: "#007bff" }}
-          >
+          <Button onClick={() => onEdit(filme.id, filme.title)} variant="info">
             Editar
-          </button>
-
-          <button
-            onClick={() => onDelete(filme.id)}
-            style={{ ...styles.btn, background: "#dc3545" }}
-          >
+          </Button>
+          <div style={{ width: "10px" }}></div> {/* Espacinho */}
+          <Button onClick={() => onDelete(filme.id)} variant="danger">
             Excluir
-          </button>
+          </Button>
         </div>
       </div>
     </div>
