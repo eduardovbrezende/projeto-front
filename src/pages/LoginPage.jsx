@@ -1,8 +1,12 @@
 // importar as ferramentas
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 // importar a funçao login
 import { login } from "../services/autenticacao.js";
+// importar estilo
+import styles from "../styles/Autentica.module.css";
+import Input from "../components/Input/Input.jsx";
+import Button from "../components/Button/Button.jsx";
 
 function LoginPage() {
   // guardar o estado das variaveis
@@ -38,35 +42,39 @@ function LoginPage() {
   };
 
   return (
-    <div>
-      <h1>Esta sera a pagina de login</h1>
-      <p>Formulairo de login</p>
-      {/* Ao clicar o botao de Entrar é chamada a funçao envioFormulario*/}
-      <form onSubmit={envioFormulario}>
-        <div>
-          <label htmlFor="email">E-mail</label>
-          <input
+    <div className={styles.container}>
+      <div className={styles.card}>
+        <h2 className={styles.title}>Acesse sua Conta</h2>
+
+        <form onSubmit={envioFormulario}>
+          <Input
+            label="E-mail"
             type="email"
-            id="email"
+            placeholder="exemplo@email.com"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            required
           />
-        </div>
-        <div>
-          <label htmlFor="senha">Senha</label>
-          <input
+          <Input
+            label="Senha"
             type="password"
-            id="senha"
+            placeholder="Sua senha"
             value={senha}
             onChange={(e) => setSenha(e.target.value)}
-            required
           />
-        </div>
-        <button type="submit">Entrar</button>
-        {/* se a variavel error for setada na funcao envioFormulario, é mostrado a mensagem de erro*/}
-        {error && <p style={{ color: "red" }}>{error}</p>}
-      </form>
+
+          {error && <p style={{ color: "red", fontSize: "14px" }}>{error}</p>}
+
+          <div style={{ marginTop: "20px" }}>
+            <Button type="submit" variant="primary" style={{ width: "100%" }}>
+              Entrar
+            </Button>
+          </div>
+        </form>
+
+        <p className={styles.footerText}>
+          Não tem conta? <Link to="/register">Cadastre-se aqui</Link>
+        </p>
+      </div>
     </div>
   );
 }
