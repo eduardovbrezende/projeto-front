@@ -1,29 +1,76 @@
+/* Container que ocupa a tela toda */
 .container {
+  min-height: 100vh;
+  width: 100vw;
+
+  /* Centralização Flexbox */
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
-  background-color: #f0f2f5;
+  padding: 20px; /* Garante que o card não encoste na borda em celulares */
+
+  /* Configuração do Background */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  /* Truque profissional: Escurece a imagem para o card branco destacar mais */
+  background-color: rgba(0, 0, 0, 0.6);
+  background-blend-mode: overlay;
 }
 
+/* O Card Branco Centralizado */
 .card {
-  background-color: white;
-  padding: 30px;
-  border-radius: 8px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  background-color: var(--bg-card); /* ou #ffffff */
+  padding: 40px;
+  border-radius: 12px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3); /* Sombra elegante */
   width: 100%;
-  max-width: 400px;
+  max-width: 450px;
+  border: 1px solid rgba(255, 255, 255, 0.2); /* Borda sutil */
 }
 
 .title {
   text-align: center;
-  margin-bottom: 20px;
-  color: #333;
+  margin-bottom: 30px;
+  color: var(--text-primary);
+  font-size: 1.8rem;
+  font-weight: 700;
+}
+
+.formStack {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.error {
+  color: var(--danger-color);
+  font-size: 14px;
+  text-align: center;
+  background-color: rgba(220, 53, 69, 0.1);
+  padding: 10px;
+  border-radius: 4px;
+}
+
+.actions {
+  margin-top: 10px;
 }
 
 .footerText {
-  margin-top: 15px;
+  margin-top: 25px;
   text-align: center;
   font-size: 14px;
-  color: #666;
+  color: var(--text-secondary);
+}
+
+.link {
+  color: var(--primary-color);
+  font-weight: 600;
+  text-decoration: none;
+  margin-left: 5px;
+}
+
+.link:hover {
+  text-decoration: underline;
 }

@@ -1,6 +1,8 @@
 version: "3.8"
 
 services:
+  # SERVIÇO 1: API Fake (JSON Server)
+  # Simula o banco de dados de usuários para Login/Registro
   mock-api:
     container_name: dev_mock_api
     build:
@@ -13,6 +15,7 @@ services:
     restart: always
 
   frontend:
+    # SERVIÇO 2: Front-end (Vite + React)
     container_name: dev_frontend
     build:
       context: .

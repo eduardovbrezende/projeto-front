@@ -24,4 +24,4 @@ Localização: Corre localmente através do Docker Compose (http://localhost:300
 
 . ✅ CRUD e Componentização
 
-. Finalização e Documentação
+. ✅ Finalização e Documentação

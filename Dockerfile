@@ -17,5 +17,4 @@
     EXPOSE 5173
 
     # Comando para iniciar o servidor de desenvolvimento
-    # Note que o script 'dev' no package.json será alterado para incluir '--host'
-    CMD ["npm", "run", "dev"]
+    CMD ["npm", "run", "dev", "--", "--host"]

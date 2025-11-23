@@ -5,10 +5,10 @@ export const login = async (email, senha) => {
   const url = `${API_URL}/users?email=${email}&senha=${senha}`;
 
   // chamada a API
-  const chamada = await fetch(url);
+  const resposta = await fetch(url);
 
   // recebe a chamada da API para um vetor de usuarios
-  const usuario = await chamada.json();
+  const usuario = await resposta.json();
 
   // se o tamanho do vetor for 1, foi achado exatamente um usuario e ele é retornado.
   // se o vetor estiver vazio ou com tamanho > 1, existe uma falha

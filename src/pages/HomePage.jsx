@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
+import styles from "./HomePage.module.css";
 import {
   getFilmesTMDB,
   getFilmesLocal,
@@ -7,7 +8,7 @@ import {
   deleteFilme,
   updateFilme,
 } from "../services/filmes";
-import CardFilmes from "../components/CardFilmes";
+import CardFilmes from "../components/CardFilmes/CardFilmes";
 import Button from "../components/Button/Button";
 import Input from "../components/Input/Input";
 
@@ -16,19 +17,16 @@ function HomePage() {
   const [loading, setLoading] = useState(true);
   const [novoTitulo, setNovoTitulo] = useState("");
 
-  // URL base das imagens (definida no .env)
-  const imgBaseUrl = import.meta.env.VITE_TMDB_IMG;
-
   // READ: Carregar dados ao abrir a página
   useEffect(() => {
     async function carregarDados() {
-      // Tenta pegar do LocalStorage primeiro (para manter edições salvas)
+      // 1. Tenta pegar do LocalStorage (Prioridade para dados locais)
       let dados = getFilmesLocal();
 
-      // Se o LocalStorage estiver vazio (primeira visita), busca da API
+      // 2. Se vazio, busca da API e salva no LocalStorage
       if (dados.length === 0) {
         dados = await getFilmesTMDB();
-        saveToStorage(dados); // Salva no storage para permitir CRUD futuro
+        saveToStorage(dados);
       }
 
       setFilmes(dados);
@@ -38,10 +36,10 @@ function HomePage() {
     carregarDados();
   }, []);
 
-  // CREATE: Adicionar um novo filme manualmente
+  // CREATE: Adicionar filme
   const handleCriarFilme = (e) => {
     e.preventDefault();
-    if (!novoTitulo) return;
+    if (!novoTitulo.trim()) return; // Evita criar com texto vazio
 
     const novoFilme = {
       title: novoTitulo,
@@ -64,9 +62,12 @@ function HomePage() {
     }
   };
 
-  // UPDATE: Editar título do filme
+  // UPDATE: Editar filme
   const handleEditar = (id, tituloAtual) => {
-    const novoNome = prompt("Digite o novo nome do filme:", tituloAtual);
+    const novoNome = prompt(
+      "Digite o nome do novo filme que deseja adicionar:",
+      tituloAtual
+    );
 
     if (novoNome && novoNome !== tituloAtual) {
       const listaAtualizada = updateFilme(id, { title: novoNome });
@@ -74,28 +75,20 @@ function HomePage() {
     }
   };
 
-  if (loading) return <div style={{ padding: 20 }}>Carregando filmes...</div>;
+  if (loading) {
+    return <div className={styles.loading}>Carregando filmes...</div>;
+  }
 
   return (
-    <div style={{ padding: "20px", maxWidth: "1200px", margin: "0 auto" }}>
-      <header style={{ marginBottom: "30px", textAlign: "center" }}>
-        <h1>Catálogo de Filmes</h1>
-        <form
-          onSubmit={handleCriarFilme}
-          style={{
-            marginTop: "20px",
-            padding: "20px",
-            background: "#f4f4f4",
-            borderRadius: "8px",
-            display: "flex",
-            gap: "10px",
-            alignItems: "flex-end", // Alinha o botão com o input
-          }}
-        >
-          <div style={{ flexGrow: 1 }}>
+    <div className={styles.container}>
+      <header className={styles.header}>
+        <h1 className={styles.title}>Catálogo de Filmes</h1>
+
+        <form onSubmit={handleCriarFilme} className={styles.form}>
+          <div className="form-group">
             <Input
-              label="Novo Filme"
-              placeholder="Digite o nome do filme..."
+              label="Adicionar Filme"
+              placeholder="Digite o nome do novo filme que deseja adicionar..."
               value={novoTitulo}
               onChange={(e) => setNovoTitulo(e.target.value)}
             />
@@ -103,17 +96,10 @@ function HomePage() {
           <Button type="submit" variant="primary">
             Adicionar
           </Button>
-        </form>{" "}
+        </form>
       </header>
 
-      <div
-        style={{
-          display: "grid",
-          gridTemplateColumns: "repeat(auto-fill, minmax(200px, 1fr))",
-          gap: "20px",
-        }}
-      >
-        {/* Renderiza o componente para cada filme da lista */}
+      <div className={styles.grid}>
         {filmes.map((filme) => (
           <CardFilmes
             key={filme.id}

@@ -1,35 +1,32 @@
 .btn {
-  padding: 10px 20px;
+  padding: 12px 20px;
   border: none;
-  border-radius: 4px;
+  border-radius: var(--border-radius);
   cursor: pointer;
   font-size: 16px;
-  font-weight: bold;
-  transition: background 0.2s;
+  font-weight: 600;
   color: white;
+  transition: filter 0.2s, transform 0.1s, box-shadow 0.2s;
+  line-height: 1.5;
 }
 
-/* Variações de cores */
+.btn:active {
+  transform: scale(0.98);
+}
+
 .primary {
-  background-color: #28a745; /* Verde (Salvar/Adicionar) */
+  background-color: var(--primary-color);
 }
-
-.primary:hover {
-  background-color: #218838;
-}
-
 .danger {
-  background-color: #dc3545; /* Vermelho (Excluir) */
+  background-color: var(--danger-color);
 }
-
-.danger:hover {
-  background-color: #c82333;
-}
-
 .info {
-  background-color: #007bff; /* Azul (Editar/Entrar) */
+  background-color: var(--primary-color);
 }
 
+.primary:hover,
+.danger:hover,
 .info:hover {
-  background-color: #0069d9;
+  filter: brightness(0.9);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
