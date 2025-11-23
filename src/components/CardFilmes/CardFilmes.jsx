@@ -10,7 +10,7 @@ function CardFilmes({ filme, onEdit, onDelete }) {
 
   // Lógica de formatação da nota
   const notaFormatada = filme.vote_average
-    ? Number(filme.vote_average).toFixed(1) // Transforma em 7.5
+    ? Number(filme.vote_average).toFixed(1)
     : "N/A";
 
   return (
