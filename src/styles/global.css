@@ -1,0 +1,61 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap");
+
+/* Variáveis Globais */
+:root {
+  --primary-color: #007bff;
+  --primary-hover: #0056b3;
+  --danger-color: #dc3545;
+  --success-color: #28a745;
+
+  /* Cores de Fundo e Texto */
+  --bg-body: #f0f2f5;
+  --bg-card: #ffffff;
+  --text-primary: #333333;
+  --text-secondary: #666666;
+
+  /* Tamanhos Padrão */
+  --border-radius: 8px;
+}
+
+/* O Reset Universal  */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box; /* Garante que padding não aumente o tamanho dos elementos */
+}
+
+/*  Estilos Base do Corpo */
+body {
+  font-family: "Inter", sans-serif;
+  background-color: var(--bg-body);
+  color: var(--text-primary);
+  -webkit-font-smoothing: antialiased;
+  min-height: 100vh;
+}
+
+/* Melhorias em elementos padrão */
+button {
+  cursor: pointer;
+  font-family: inherit;
+}
+
+input,
+textarea,
+button {
+  font-family: inherit;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+ul {
+  list-style: none;
+}
+
+.form-group {
+  display: flex;
+  gap: 12px;
+  width: 100%;
+}

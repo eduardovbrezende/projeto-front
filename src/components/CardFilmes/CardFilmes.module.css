@@ -1,0 +1,58 @@
+.card {
+  border: 1px solid #e0e0e0;
+  border-radius: var(--border-radius);
+  overflow: hidden;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+  background-color: var(--bg-card); /* Usa a variável global */
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+}
+
+.image {
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+  background-color: #f0f0f0;
+}
+
+.content {
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.title {
+  font-size: 16px;
+  margin: 0 0 10px 0;
+  height: 44px;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  color: var(--text-primary); /* Usa a variável global */
+}
+
+.rating {
+  font-size: 14px;
+  color: var(--text-secondary); /* Usa a variável global */
+  margin-bottom: 15px;
+  font-weight: 600;
+}
+
+.actions {
+  margin-top: auto;
+  display: flex;
+  gap: 10px;
+}
+
+/* Nova classe para substituir o style inline do JSX */
+.btnWrapper {
+  flex: 1;
+}

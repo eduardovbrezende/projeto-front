@@ -10,7 +10,6 @@ const Input = ({
 }) => {
   return (
     <div className={styles.wrapper}>
-      {/* Só mostra o label se ele for passado */}
       {label && <label className={styles.label}>{label}</label>}
 
       <input
